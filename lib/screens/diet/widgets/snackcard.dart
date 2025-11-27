@@ -1,22 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:nutri/core/theme/app_spacings.dart';
 import 'package:nutri/core/theme/colors.dart';
 
 class SnackCard extends StatelessWidget {
   final String title;
   final String time;
   final List<Map<String, String>> items;
+  final double protein;
+  final double carbs;
+  final double fat;
+  final double calories;
 
   const SnackCard({
     super.key,
     required this.title,
     required this.time,
     required this.items,
+    required this.protein,
+    required this.carbs,
+    required this.fat,
+    required this.calories,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+      padding: const EdgeInsets.symmetric(
+        vertical: AppSpacings.md,
+        horizontal: AppSpacings.lg,
+      ),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(16),
@@ -43,8 +55,8 @@ class SnackCard extends StatelessWidget {
               ),
               Container(
                 padding: const EdgeInsets.symmetric(
-                  horizontal: 10,
-                  vertical: 5,
+                  horizontal: AppSpacings.sm,
+                  vertical: 5, // Keep 5 as it's specific to this tag
                 ),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
@@ -64,7 +76,7 @@ class SnackCard extends StatelessWidget {
           const SizedBox(height: 16),
           ...items.map((foodItem) {
             return Padding(
-              padding: const EdgeInsets.only(bottom: 8.0),
+              padding: const EdgeInsets.only(bottom: AppSpacings.xs),
               child: Row(
                 children: [
                   Icon(Icons.circle, size: 8, color: AppColors.green200),
@@ -95,11 +107,41 @@ class SnackCard extends StatelessWidget {
           const Divider(
             color: AppColors.gray400,
           ),
-          const Text('320 kcal', style: TextStyle(
-            color: AppColors.green200,
-            fontWeight: FontWeight.bold,
-          ),),
+          const SizedBox(height: 5),
+          Wrap(
+            alignment: WrapAlignment.center,
+            crossAxisAlignment: WrapCrossAlignment.center,
+            direction: Axis.horizontal,
+            spacing: 5,
+            runSpacing: 5,
+            children: [
+              _buildMacroItem(context, '${calories.toInt()} kcal', Colors.grey.shade700),
+              _buildMacroItem(context, '${protein.toInt()}g Prot', Colors.blue.shade600),
+              _buildMacroItem(context, '${carbs.toInt()}g Carb', Colors.orange.shade600),
+              _buildMacroItem(context, '${fat.toInt()}g Gord', Colors.red.shade400),
+            ],
+          ),
         ],
+      ),
+    );
+  }
+
+  Widget _buildMacroItem(BuildContext context, String text, Color color) {
+    return Container(
+      padding: const EdgeInsets.symmetric(
+        horizontal: AppSpacings.xs,
+        vertical: 4,
+      ),
+      decoration: BoxDecoration(
+        color: color.withValues(alpha: .1),
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Text(
+        text,
+        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+              color: color,
+              fontWeight: FontWeight.bold,
+            ),
       ),
     );
   }

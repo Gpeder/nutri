@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:nutri/core/theme/colors.dart';
 
+import 'package:nutri/core/theme/app_spacings.dart';
+
 class CustomTabBar extends StatelessWidget {
   final List<String> tabs;
 
@@ -13,7 +15,7 @@ class CustomTabBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 50,
-      margin: const EdgeInsets.symmetric(horizontal: 15),
+      margin: const EdgeInsets.symmetric(horizontal: AppSpacings.md),
       decoration: BoxDecoration(
         color: AppColors.gray100,
         borderRadius: BorderRadius.circular(10),
@@ -22,9 +24,9 @@ class CustomTabBar extends StatelessWidget {
         splashFactory: NoSplash.splashFactory,
         dividerColor: Colors.transparent,
         indicatorSize: TabBarIndicatorSize.tab,
-        indicatorPadding: const EdgeInsets.all(4),
+        indicatorPadding: const EdgeInsets.all(AppSpacings.xxs),
         indicator: BoxDecoration(
-          color: Colors.white,
+          color: AppColors.white,
           borderRadius: BorderRadius.circular(10),
           boxShadow: [
             BoxShadow(

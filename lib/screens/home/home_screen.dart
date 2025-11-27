@@ -8,6 +8,8 @@ import 'package:nutri/screens/home/widgets/home_appbar.dart';
 import 'package:nutri/screens/home/widgets/training_card.dart';
 
 
+import 'package:nutri/core/theme/app_spacings.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -23,16 +25,19 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: HomeAppBar(),
       body: SingleChildScrollView(
-        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        padding: const EdgeInsets.symmetric(
+          horizontal: AppSpacings.lg,
+          vertical: AppSpacings.sm,
+        ),
         child: Column(
           children: [
-            SizedBox(height: 10),
+            const SizedBox(height: AppSpacings.sm),
             _containerscardhome(),
-            SizedBox(height: 20),
+            const SizedBox(height: AppSpacings.lg),
             CardHelthRefrigerator(percent: 0.25),
-            SizedBox(height: 20),
+            const SizedBox(height: AppSpacings.lg),
             ContainerWaterController(),
-            SizedBox(height: 20),
+            const SizedBox(height: AppSpacings.lg),
 
             TrainingCard(
               backgroundColor: AppColors.yellow50,
@@ -62,10 +67,10 @@ class _HomeScreenState extends State<HomeScreen> {
   LayoutBuilder _containerscardhome() {
     return LayoutBuilder(
       builder: (context, constraints) {
-        double cardWidth = (constraints.maxWidth - 10) / 2;
+        double cardWidth = (constraints.maxWidth - AppSpacings.sm) / 2;
         return Wrap(
-          spacing: 10,
-          runSpacing: 10,
+          spacing: AppSpacings.sm,
+          runSpacing: AppSpacings.sm,
           children: [
             SizedBox(
               width: cardWidth,

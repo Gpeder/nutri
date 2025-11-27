@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:heroicons/heroicons.dart';
 import 'package:nutri/core/theme/colors.dart';
 
+import 'package:nutri/core/theme/app_spacings.dart';
+
 class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   const HomeAppBar({
     super.key,
@@ -23,7 +25,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
           style: Theme.of(context).textTheme.bodyMedium,
         ),
         trailing: Container(
-          padding: const EdgeInsets.all(12),
+          padding: const EdgeInsets.all(AppSpacings.sm),
           decoration: BoxDecoration(
             color: AppColors.green100,
             shape: BoxShape.circle,

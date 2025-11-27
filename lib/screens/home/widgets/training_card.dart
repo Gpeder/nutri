@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:nutri/core/theme/app_theme.dart';
 import 'package:nutri/widgets/customcheckbox.dart';
 
+import 'package:nutri/core/theme/app_spacings.dart';
+
 class TrainingCard extends StatelessWidget {
   final Color backgroundColor;
   final Color borderColor;
@@ -32,7 +34,7 @@ class TrainingCard extends StatelessWidget {
       onTap: onTap,
       child: Container(
         width: double.infinity,
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.all(AppSpacings.lg),
         decoration: BoxDecoration(
           color: backgroundColor,
           borderRadius: BorderRadius.circular(12),
@@ -52,7 +54,7 @@ class TrainingCard extends StatelessWidget {
                   icon,
                   color: accentColor,
                 ),
-                const SizedBox(width: 15),
+                const SizedBox(width: AppSpacings.md),
                 Text(
                   title,
                   style: Theme.of(context).textTheme.titleLarge?.copyWith(
@@ -67,7 +69,7 @@ class TrainingCard extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: AppSpacings.lg),
             Text(
               subtitle,
               style: Theme.of(context).textTheme.titleLarge,

@@ -3,6 +3,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:nutri/core/theme/colors.dart';
 import 'package:nutri/core/theme/app_theme.dart';
 
+import 'package:nutri/core/theme/app_spacings.dart';
+
 class ContainerWaterController extends StatefulWidget {
   const ContainerWaterController({super.key});
 
@@ -33,7 +35,10 @@ class _ContainerWaterControllerState extends State<ContainerWaterController> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 20, horizontal: 15),
+      padding: const EdgeInsets.symmetric(
+        vertical: AppSpacings.lg,
+        horizontal: AppSpacings.md,
+      ),
       decoration: BoxDecoration(
         color: AppColors.blue75,
         boxShadow: AppTheme.softShadow,
@@ -49,7 +54,7 @@ class _ContainerWaterControllerState extends State<ContainerWaterController> {
                 color: AppColors.blue200,
                 size: 20,
               ),
-              SizedBox(width: 5),
+              const SizedBox(width: AppSpacings.xxs),
               Text('Hidratação', style: Theme.of(context).textTheme.titleLarge),
               Spacer(),
               Text(
@@ -60,10 +65,10 @@ class _ContainerWaterControllerState extends State<ContainerWaterController> {
               ),
             ],
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: AppSpacings.lg),
           Wrap(
-            spacing: 10,
-            runSpacing: 10,
+            spacing: AppSpacings.sm,
+            runSpacing: AppSpacings.sm,
             crossAxisAlignment: WrapCrossAlignment.center,
             alignment: WrapAlignment.center,
             children: List.generate(
@@ -80,7 +85,7 @@ class _ContainerWaterControllerState extends State<ContainerWaterController> {
               },
             ),
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: AppSpacings.lg),
           Text(
             'Meta diária: 2000ml (8copos)',
             style: Theme.of(
@@ -113,7 +118,10 @@ class WatterButton extends StatelessWidget {
       onTap: onTap,
       borderRadius: BorderRadius.circular(12),
       child: Container(
-        padding: .symmetric(horizontal: 15, vertical: 10),
+        padding: const EdgeInsets.symmetric(
+          horizontal: AppSpacings.md,
+          vertical: AppSpacings.sm,
+        ),
         decoration: BoxDecoration(
           color: color,
           borderRadius: BorderRadius.circular(12),
