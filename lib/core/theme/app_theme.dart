@@ -15,6 +15,14 @@ class AppTheme {
   static const Color _darkTextSec = Color(0xFF9CA3AF);
   static const Color _darkBorder = Color(0xFF1E293B);
   static const Color _darkPrimary = Color(0xFF34D399);
+  
+  static final List<BoxShadow> softShadow = [
+    BoxShadow(
+      color: Colors.black.withOpacity(0.03),
+      blurRadius: 10,
+      offset: const Offset(0, 4),
+    ),
+  ];
 
   static TextTheme _buildTextTheme(Color mainTextColor) {
     final baseTextTheme = GoogleFonts.interTextTheme();

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nutri/core/theme/colors.dart' show AppColors;
+import 'package:nutri/core/theme/app_theme.dart';
 
 class CardHome extends StatelessWidget {
   final IconData icon;
@@ -21,19 +22,20 @@ class CardHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: .all(20),
+      padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         color: bgColor,
         borderRadius: BorderRadius.circular(12),
         border: Border.all(color: borderColor, width: 0.5),
+        boxShadow: AppTheme.softShadow,
       ),
       child: Column(
-        mainAxisSize: .min,
-        crossAxisAlignment: .start,
-        mainAxisAlignment: .spaceAround,
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Icon(icon, color: iconColor),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           Text(value, style: Theme.of(context).textTheme.titleLarge),
           Text(
             subtitle,

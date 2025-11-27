@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:nutri/core/theme/colors.dart' show AppColors;
+import 'package:nutri/core/theme/colors.dart';
+import 'package:nutri/core/theme/app_theme.dart';
 import 'package:nutri/screens/home/widgets/linear_progress.dart';
 import 'package:nutri/widgets/custombadge.dart';
 
@@ -46,13 +47,7 @@ class CardHelthRefrigerator extends StatelessWidget {
       padding: .symmetric(vertical: 20, horizontal: 15),
       decoration: BoxDecoration(
         color: AppColors.white,
-        boxShadow: [
-          BoxShadow(
-            color: AppColors.gray100,
-            blurRadius: 1,
-            offset: const Offset(0, 1),
-          ),
-        ],
+        boxShadow: AppTheme.softShadow,
         borderRadius: BorderRadius.circular(12),
         border: Border.all(color: AppColors.gray100, width: 1),
       ),
