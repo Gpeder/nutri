@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:nutri/core/theme/colors.dart';
+import 'package:nutri/models/refrigetor_model.dart';
 import 'package:nutri/screens/diet/widgets/refrigeratorcard.dart';
 import 'package:nutri/screens/diet/widgets/snackcard.dart';
 import 'package:nutri/widgets/genericappbar.dart';
 import 'package:nutri/screens/diet/widgets/custom_tab_bar.dart';
 
-import 'package:nutri/services/model/snackmodel.dart';
-
-import 'package:nutri/core/theme/app_spacings.dart';
+import 'package:nutri/models/snack_model.dart';
 
 class DietScreen extends StatelessWidget {
   const DietScreen({super.key});
@@ -25,46 +25,90 @@ class DietScreen extends StatelessWidget {
         ),
         body: Column(
           children: [
-            const SizedBox(height: AppSpacings.lg),
+            const SizedBox(height: 20),
             CustomTabBar(tabs: ['Meu Plano', 'Minha Geladeira']),
 
-            const SizedBox(height: AppSpacings.lg),
+            const SizedBox(height: 20),
 
             Expanded(
               child: TabBarView(
                 children: [
                   _myPlan(),
-                  Column(
-                    crossAxisAlignment: .center,
+                  ListView(
+                    padding: .symmetric(horizontal: 15),
                     children: [
-                      Padding(
+                      HeaderRefrigerator(),
+                      const SizedBox(height: 20),
+                      ListView.separated(
+                        separatorBuilder: (context, index) =>
+                            const SizedBox(height: 10),
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: refrigeratorMock.length,
+                        itemBuilder: (context, index) {
+                          final item = refrigeratorMock[index];
+                          return RefrigeratorItem(
+                            item: item.item,
+                            uni: item.uni,
+                            iconColor: item.healthFood == 'Alto'
+                                ? AppColors.green200
+                                : item.healthFood == 'Médio'
+                                ? AppColors.yellow200
+                                : AppColors.red200,
+                          );
+                        },
+                      ),
+                      const SizedBox(height: 20),
+                      Container(
                         padding: const EdgeInsets.symmetric(
-                          horizontal: AppSpacings.lg,
+                          vertical: 20,
+                          horizontal: 15,
                         ),
-                        child: Row(
-                          children: [
-                            Expanded(
-                              child: RefrigeratorCard(
-                                title: '850',
-                                subtitle: 'KCAL DISPONÍVEIS',
-                              ),
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                            colors: [
+                              AppColors.green200,
+                              Color(0xFF059669),
+                            ],
+                          ),
+                          borderRadius: BorderRadius.circular(12),
+                          border: Border.all(color: AppColors.gray100),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withValues(alpha: 0.05),
+                              blurRadius: 2,
+                              offset: const Offset(0, 1),
                             ),
-                            const SizedBox(width: AppSpacings.lg),
-                            Expanded(
-                              child: RefrigeratorCard(
-                                title: 'ALTO',
-                                titleColor: AppColors.green200,
-                                subtitle: 'POTENCIAL PROTEICO',
+                          ],
+                        ),
+                        child: Column(
+                          crossAxisAlignment: .start,
+                          children: [
+                            Row(
+                              children: [
+                                Icon(MdiIcons.chefHat, color: AppColors.white),
+                                SizedBox(width: 10),
+                                Text(
+                                  'Sugestão do Chef IA',
+                                  style: Theme.of(context).textTheme.titleLarge
+                                      ?.copyWith(color: AppColors.white),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 20),
+                            SizedBox(
+                              width: double.infinity,
+                              child: ElevatedButton(
+                                onPressed: () {},
+                                child: const Text('Adicionar Refeição'),
                               ),
                             ),
                           ],
                         ),
                       ),
-                      const SizedBox(height: AppSpacings.md),
-                      Text(
-                        'Dispensa & Geladeira',
-                        style: Theme.of(context).textTheme.titleMedium,
-                      ),
+                      const SizedBox(height: 20),
                     ],
                   ),
                 ],
@@ -78,16 +122,14 @@ class DietScreen extends StatelessWidget {
 
   ListView _myPlan() {
     return ListView.separated(
-      padding: const EdgeInsets.symmetric(
-        horizontal: AppSpacings.lg,
-      ).copyWith(bottom: AppSpacings.lg),
+      padding: const EdgeInsets.symmetric(horizontal: 20).copyWith(bottom: 20),
       itemBuilder: (context, index) {
         if (index == dailyDietMock.length) {
           return Center(
             child: Padding(
-              padding: const EdgeInsets.only(top: AppSpacings.sm),
+              padding: const EdgeInsets.only(top: 12),
               child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: AppSpacings.lg),
+                padding: const EdgeInsets.symmetric(horizontal: 20),
                 decoration: BoxDecoration(
                   color: AppColors.yellow50,
                   borderRadius: BorderRadius.circular(12),
@@ -120,9 +162,119 @@ class DietScreen extends StatelessWidget {
           fat: snack.fat,
         );
       },
-      separatorBuilder: (context, index) =>
-          const SizedBox(height: AppSpacings.md),
+      separatorBuilder: (context, index) => const SizedBox(height: 16),
       itemCount: dailyDietMock.length + 1,
+    );
+  }
+}
+
+class RefrigeratorItem extends StatelessWidget {
+  final String item;
+  final String uni;
+  final Color iconColor;
+  const RefrigeratorItem({
+    super.key,
+    required this.item,
+    required this.uni,
+    required this.iconColor,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: .symmetric(horizontal: 16),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(8),
+        border: Border.all(color: AppColors.gray100),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.05),
+            blurRadius: 2,
+            offset: const Offset(0, 1),
+          ),
+        ],
+      ),
+      child: ListTile(
+        contentPadding: .zero,
+        title: Text(
+          item,
+          style: Theme.of(
+            context,
+          ).textTheme.bodyMedium?.copyWith(color: AppColors.gray900),
+        ),
+        subtitle: Padding(
+          padding: const EdgeInsets.only(top: 4),
+          child: Text(
+            uni,
+            style: Theme.of(
+              context,
+            ).textTheme.bodyMedium?.copyWith(color: AppColors.gray500),
+          ),
+        ),
+        trailing: Icon(Icons.circle, color: iconColor, size: 16),
+      ),
+    );
+  }
+}
+
+class HeaderRefrigerator extends StatelessWidget {
+  const HeaderRefrigerator({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: .center,
+      children: [
+        Row(
+          children: [
+            Expanded(
+              child: RefrigeratorCard(
+                title: '850',
+                subtitle: 'KCAL DISPONÍVEIS',
+              ),
+            ),
+            const SizedBox(width: 10),
+            Expanded(
+              child: RefrigeratorCard(
+                title: 'ALTO',
+                titleColor: AppColors.green200,
+                subtitle: 'POTENCIAL PROTEICO',
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 16),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              'Dispensa & Geladeira',
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
+            TextButton.icon(
+              style: TextButton.styleFrom(
+                splashFactory: NoSplash.splashFactory,
+                foregroundColor: AppColors.green200,
+                iconColor: AppColors.green200,
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(12)),
+                ),
+              ),
+              clipBehavior: Clip.none,
+              onPressed: () {},
+              icon: Icon(Icons.add),
+              label: Text(
+                'Adicionar',
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  color: AppColors.green200,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ],
     );
   }
 }

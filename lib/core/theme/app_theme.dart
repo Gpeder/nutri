@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'colors.dart';
 
 class AppTheme {
   static const Color _lightBg = Color(0xFFffffff);
@@ -18,7 +19,7 @@ class AppTheme {
   
   static final List<BoxShadow> softShadow = [
     BoxShadow(
-      color: Colors.black.withOpacity(0.03),
+      color: Colors.black.withValues(alpha: 0.03),
       blurRadius: 10,
       offset: const Offset(0, 4),
     ),
@@ -71,6 +72,20 @@ class AppTheme {
         outline: _lightBorder,
       ),
       textTheme: _buildTextTheme(_lightTextMain),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: AppColors.white,
+          foregroundColor: AppColors.green200,
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+          textStyle: const TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+      ),
 
     );
   }
@@ -88,6 +103,20 @@ class AppTheme {
         outline: _darkBorder,
       ),
       textTheme: _buildTextTheme(_darkTextMain),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: AppColors.slate800,
+          foregroundColor: AppColors.emerald400,
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+          textStyle: const TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+      ),
     );
   }
 }

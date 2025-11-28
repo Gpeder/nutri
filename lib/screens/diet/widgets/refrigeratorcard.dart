@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:nutri/core/theme/app_spacings.dart';
 import 'package:nutri/core/theme/colors.dart';
 
 class RefrigeratorCard extends StatelessWidget {
@@ -16,7 +15,7 @@ class RefrigeratorCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: .all(AppSpacings.sm),
+      padding: .symmetric(vertical: 12, horizontal: 10),
       decoration: BoxDecoration(
         boxShadow: [
           BoxShadow(
@@ -26,20 +25,24 @@ class RefrigeratorCard extends StatelessWidget {
           ),
         ],
         color: AppColors.gray100,
-        borderRadius: .circular(AppSpacings.sm),
+        borderRadius: .circular(12),
         border: Border.all(color: AppColors.gray100),
       ),
       child: Column(
         children: [
           Text(
             title,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
             style: Theme.of(
               context,
             ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold, color: titleColor),
           ),
-          const SizedBox(height: AppSpacings.sm),
+          const SizedBox(height: 12),
           Text(
             subtitle,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
             style: Theme.of(
               context,
             ).textTheme.bodySmall?.copyWith(color: AppColors.gray500),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:nutri/core/theme/app_spacings.dart';
 import 'package:nutri/core/theme/colors.dart';
 
 class SnackCard extends StatelessWidget {
@@ -26,8 +25,8 @@ class SnackCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(
-        vertical: AppSpacings.md,
-        horizontal: AppSpacings.lg,
+        vertical: 16,
+        horizontal: 20,
       ),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -55,8 +54,8 @@ class SnackCard extends StatelessWidget {
               ),
               Container(
                 padding: const EdgeInsets.symmetric(
-                  horizontal: AppSpacings.sm,
-                  vertical: 5, // Keep 5 as it's specific to this tag
+                  horizontal: 12,
+                  vertical: 5,
                 ),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
@@ -76,7 +75,7 @@ class SnackCard extends StatelessWidget {
           const SizedBox(height: 16),
           ...items.map((foodItem) {
             return Padding(
-              padding: const EdgeInsets.only(bottom: AppSpacings.xs),
+              padding: const EdgeInsets.only(bottom: 8),
               child: Row(
                 children: [
                   Icon(Icons.circle, size: 8, color: AppColors.green200),
@@ -129,7 +128,7 @@ class SnackCard extends StatelessWidget {
   Widget _buildMacroItem(BuildContext context, String text, Color color) {
     return Container(
       padding: const EdgeInsets.symmetric(
-        horizontal: AppSpacings.xs,
+        horizontal: 8,
         vertical: 4,
       ),
       decoration: BoxDecoration(

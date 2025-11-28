@@ -3,8 +3,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:nutri/core/theme/colors.dart';
 import 'package:nutri/core/theme/app_theme.dart';
 
-import 'package:nutri/core/theme/app_spacings.dart';
-
 class ContainerWaterController extends StatefulWidget {
   const ContainerWaterController({super.key});
 
@@ -16,7 +14,8 @@ class ContainerWaterController extends StatefulWidget {
 class _ContainerWaterControllerState extends State<ContainerWaterController> {
   final List<bool> _buttonStates = List.generate(10, (index) => false);
 
-  int get _totalWater => _buttonStates.where((isActive) => isActive).length * 250;
+  int get _totalWater =>
+      _buttonStates.where((isActive) => isActive).length * 250;
 
   void _toggleButton(int index) {
     setState(() {
@@ -35,10 +34,8 @@ class _ContainerWaterControllerState extends State<ContainerWaterController> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(
-        vertical: AppSpacings.lg,
-        horizontal: AppSpacings.md,
-      ),
+      padding: .symmetric(vertical: 20, horizontal: 15),
+
       decoration: BoxDecoration(
         color: AppColors.blue75,
         boxShadow: AppTheme.softShadow,
@@ -54,7 +51,7 @@ class _ContainerWaterControllerState extends State<ContainerWaterController> {
                 color: AppColors.blue200,
                 size: 20,
               ),
-              const SizedBox(width: AppSpacings.xxs),
+              const SizedBox(width: 4),
               Text('Hidratação', style: Theme.of(context).textTheme.titleLarge),
               Spacer(),
               Text(
@@ -65,27 +62,23 @@ class _ContainerWaterControllerState extends State<ContainerWaterController> {
               ),
             ],
           ),
-          const SizedBox(height: AppSpacings.lg),
+          const SizedBox(height: 20),
           Wrap(
-            spacing: AppSpacings.sm,
-            runSpacing: AppSpacings.sm,
+            spacing: 12,
+            runSpacing: 12,
             crossAxisAlignment: WrapCrossAlignment.center,
             alignment: WrapAlignment.center,
-            children: List.generate(
-              10,
-              (index) {
-                final isActive = _buttonStates[index];
-                return WatterButton(
-                  color: isActive ? AppColors.blue200 : AppColors.blue125,
-                  borderColor:
-                      isActive ? AppColors.blue200 : AppColors.blue100,
-                  iconColor: isActive ? AppColors.white : AppColors.blue75,
-                  onTap: () => _toggleButton(index),
-                );
-              },
-            ),
+            children: List.generate(10, (index) {
+              final isActive = _buttonStates[index];
+              return WatterButton(
+                color: isActive ? AppColors.blue200 : AppColors.blue125,
+                borderColor: isActive ? AppColors.blue200 : AppColors.blue100,
+                iconColor: isActive ? AppColors.white : AppColors.blue75,
+                onTap: () => _toggleButton(index),
+              );
+            }),
           ),
-          const SizedBox(height: AppSpacings.lg),
+          const SizedBox(height: 20),
           Text(
             'Meta diária: 2000ml (8copos)',
             style: Theme.of(
@@ -118,10 +111,7 @@ class WatterButton extends StatelessWidget {
       onTap: onTap,
       borderRadius: BorderRadius.circular(12),
       child: Container(
-        padding: const EdgeInsets.symmetric(
-          horizontal: AppSpacings.md,
-          vertical: AppSpacings.sm,
-        ),
+        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
         decoration: BoxDecoration(
           color: color,
           borderRadius: BorderRadius.circular(12),
