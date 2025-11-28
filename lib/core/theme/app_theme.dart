@@ -25,6 +25,14 @@ class AppTheme {
     ),
   ];
 
+  static final ButtonStyle primaryButtonStyle = ElevatedButton.styleFrom(
+    backgroundColor: AppColors.green200,
+    foregroundColor: AppColors.white,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(5),
+    ),
+  );
+
   static TextTheme _buildTextTheme(Color mainTextColor) {
     final baseTextTheme = GoogleFonts.interTextTheme();
     final bodyTextTheme = GoogleFonts.inter();
