@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:nutri/core/theme/colors.dart';
+import 'package:nutri/screens/data/widgets/container_graphic_metrics.dart';
+import 'package:nutri/screens/data/widgets/container_graphic_wheight.dart';
 import 'package:nutri/widgets/genericappbar.dart';
 
 class DataScreen extends StatelessWidget {
@@ -8,28 +9,23 @@ class DataScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: GenericAppBar(
+      appBar: const GenericAppBar(
         title: 'Métricas',
         subtitle: 'Acompanhe sua evolução corporal.',
       ),
-      body: Column(
-        children: [
-          Container(
-            padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: AppColors.gray200),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withValues(alpha: 0.05),
-                  blurRadius: 4,
-                  offset: const Offset(0, 2),
-                ),
-              ],
-            ),
-          ),
-        ],
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+        child: Column(
+          children: [
+            const SizedBox(height: 20),
+            const ContainerGraphicWheight(),
+
+            const SizedBox(height: 20),
+
+            const ContainerGraphicMetrics(),
+            const SizedBox(height: 10),
+          ],
+        ),
       ),
     );
   }
