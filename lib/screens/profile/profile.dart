@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:nutri/core/theme/colors.dart';
+import 'package:nutri/models/historic_documents.dart';
 import 'package:nutri/screens/profile/widgets/container_profile.dart';
+import 'package:nutri/screens/profile/widgets/list_exams.dart';
 import 'package:nutri/screens/profile/widgets/switch_theme.dart';
+import 'package:nutri/screens/profile_pages/body_data.dart';
 import 'package:nutri/widgets/genericappbar.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -28,9 +31,14 @@ class ProfileScreen extends StatelessWidget {
               title: 'Dados Corporais',
               subtitle: 'Altura, peso e mais',
               icon: FontAwesomeIcons.fileLines,
-              onTap: () {},
+              onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const BodyData(),
+                ),
+              ),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 10),
             ContainerProfile(
               title: 'Exames médicos',
               subtitle: 'Enviar PDFs',
@@ -39,7 +47,7 @@ class ProfileScreen extends StatelessWidget {
               bgIconColor: AppColors.red100,
               onTap: () {},
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 10),
             ContainerProfile(
               title: 'Equipe profissional',
               subtitle: 'Nutricionista, fisioterapeuta e mais',
@@ -48,8 +56,38 @@ class ProfileScreen extends StatelessWidget {
               bgIconColor: AppColors.green100,
               onTap: () {},
             ),
+            SizedBox(height: 10),
+            Text(
+              'Arquivos recentes',
+              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                color: AppColors.gray500,
+                fontWeight: FontWeight.w800,
+              ),
+            ),
+            SizedBox(height: 5),
+            _listProfile(),
           ],
         ),
+      ),
+    );
+  }
+
+  SizedBox _listProfile() {
+    return SizedBox(
+      child: ListView.separated(
+        shrinkWrap: true,
+        physics: NeverScrollableScrollPhysics(),
+        padding: .only(bottom: 20, top: 10, left: 5, right: 5),
+        separatorBuilder: (context, index) {
+          return SizedBox(height: 10);
+        },
+        itemCount: HistocDocuments.listDocuments.length,
+        itemBuilder: (context, index) {
+          return ListExams(
+            namePdf: HistocDocuments.listDocuments[index].pdfName,
+            statusPdf: HistocDocuments.listDocuments[index].pdfStatus,
+          );
+        },
       ),
     );
   }

@@ -4,11 +4,25 @@ import 'package:nutri/core/theme/colors.dart';
 class GenericAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final String subtitle;
-  const GenericAppBar({super.key, required this.title, required this.subtitle});
+  final IconData? icon;
+  const GenericAppBar({
+    super.key,
+    required this.title,
+    required this.subtitle,
+    this.icon,
+  });
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      leading: icon != null
+          ? IconButton(
+              icon: Icon(icon, size: 20),
+              onPressed: () => Navigator.pop(context),
+            )
+          : null,
+      automaticallyImplyLeading: false,
+      titleSpacing: icon != null ? 0 : null,
       forceMaterialTransparency: true,
       bottom: const PreferredSize(
         preferredSize: Size.fromHeight(10),

@@ -9,6 +9,7 @@ import 'package:nutri/widgets/genericappbar.dart';
 import 'package:nutri/screens/diet/widgets/custom_tab_bar.dart';
 
 import 'package:nutri/models/snack_model.dart';
+import 'package:nutri/widgets/notice_cards.dart';
 
 class DietScreen extends StatelessWidget {
   const DietScreen({super.key});
@@ -68,10 +69,7 @@ class DietScreen extends StatelessWidget {
                           gradient: LinearGradient(
                             begin: Alignment.topLeft,
                             end: Alignment.bottomRight,
-                            colors: [
-                              AppColors.green200,
-                              Color(0xFF059669),
-                            ],
+                            colors: [AppColors.green200, Color(0xFF059669)],
                           ),
                           borderRadius: BorderRadius.circular(12),
                           border: Border.all(color: AppColors.gray100),
@@ -128,25 +126,12 @@ class DietScreen extends StatelessWidget {
           return Center(
             child: Padding(
               padding: const EdgeInsets.only(top: 12),
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                decoration: BoxDecoration(
-                  color: AppColors.yellow50,
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: ListTile(
-                  contentPadding: EdgeInsets.zero,
-                  leading: Icon(
-                    FontAwesomeIcons.circleExclamation,
-                    color: AppColors.yellow200,
-                  ),
-                  title: Text(
-                    "Nota: Este plano é personalizado. Evite substituições sem consultar seu nutricionista.",
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: AppColors.yellow200,
-                    ),
-                  ),
-                ),
+              child: NoticeCard(
+                text: "Nota: Este plano é personalizado. Evite substituições sem consultar seu nutricionista.",
+                icon: FontAwesomeIcons.circleExclamation,
+                iconColor: AppColors.yellow200,
+                textColor: AppColors.yellow200,
+                backgroundColor: AppColors.yellow50,
               ),
             ),
           );
@@ -167,6 +152,8 @@ class DietScreen extends StatelessWidget {
     );
   }
 }
+
+
 
 class RefrigeratorItem extends StatelessWidget {
   final String item;
@@ -199,9 +186,9 @@ class RefrigeratorItem extends StatelessWidget {
         contentPadding: EdgeInsets.zero,
         title: Text(
           item,
-          style: Theme.of(
-            context,
-          ).textTheme.bodyMedium?.copyWith(color: Theme.of(context).colorScheme.onSurface),
+          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+            color: Theme.of(context).colorScheme.onSurface,
+          ),
         ),
         subtitle: Padding(
           padding: const EdgeInsets.only(top: 4),
