@@ -29,7 +29,7 @@ class SnackCard extends StatelessWidget {
         horizontal: 20,
       ),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(16),
         border: Border.all(color: AppColors.gray100),
         boxShadow: [
@@ -84,7 +84,7 @@ class SnackCard extends StatelessWidget {
                     child: RichText(
                       text: TextSpan(
                         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          color: AppColors.gray900,
+                          color: Theme.of(context).colorScheme.onSurface,
                         ),
                         children: [
                           TextSpan(text: "${foodItem['name']} "),

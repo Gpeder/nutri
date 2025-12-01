@@ -27,9 +27,13 @@ class TrainingSelect extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Theme.of(context).cardColor,
           borderRadius: BorderRadius.circular(10),
-          border: Border.all(color: AppColors.gray200),
+          border: Border.all(
+            color: Theme.of(context).brightness == Brightness.dark
+                ? Theme.of(context).colorScheme.outline
+                : AppColors.gray200,
+          ),
           boxShadow: [
             BoxShadow(
               color: Colors.black.withValues(alpha: 0.05),

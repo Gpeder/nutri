@@ -44,7 +44,7 @@ class CardHelthRefrigerator extends StatelessWidget {
     return Container(
       padding: .symmetric(vertical: 20, horizontal: 15),
       decoration: BoxDecoration(
-        color: AppColors.white,
+        color: Theme.of(context).cardColor,
         boxShadow: AppTheme.softShadow,
         borderRadius: BorderRadius.circular(12),
         border: Border.all(color: AppColors.gray100, width: 1),

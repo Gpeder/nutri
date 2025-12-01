@@ -184,7 +184,7 @@ class RefrigeratorItem extends StatelessWidget {
     return Container(
       padding: .symmetric(horizontal: 16),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(8),
         border: Border.all(color: AppColors.gray100),
         boxShadow: [
@@ -196,12 +196,12 @@ class RefrigeratorItem extends StatelessWidget {
         ],
       ),
       child: ListTile(
-        contentPadding: .zero,
+        contentPadding: EdgeInsets.zero,
         title: Text(
           item,
           style: Theme.of(
             context,
-          ).textTheme.bodyMedium?.copyWith(color: AppColors.gray900),
+          ).textTheme.bodyMedium?.copyWith(color: Theme.of(context).colorScheme.onSurface),
         ),
         subtitle: Padding(
           padding: const EdgeInsets.only(top: 4),

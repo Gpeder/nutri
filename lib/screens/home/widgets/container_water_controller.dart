@@ -33,11 +33,12 @@ class _ContainerWaterControllerState extends State<ContainerWaterController> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
-      padding: .symmetric(vertical: 20, horizontal: 15),
+      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 15),
 
       decoration: BoxDecoration(
-        color: AppColors.blue75,
+        color: isDark ? Theme.of(context).cardColor : AppColors.blue75,
         boxShadow: AppTheme.softShadow,
         borderRadius: BorderRadius.circular(12),
         border: Border.all(color: AppColors.blue100, width: 1),

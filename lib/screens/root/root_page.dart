@@ -45,7 +45,7 @@ class _RootPageState extends State<RootPage> {
           TabItem(icon: Icons.bar_chart, title: "Evolução"),
           TabItem(icon: Icons.person, title: "Perfil"),
         ],
-        backgroundColor: Color(0xffFFFFFF),
+        backgroundColor: Theme.of(context).bottomNavigationBarTheme.backgroundColor!,
         color: AppColors.gray400,
         duration: Duration(milliseconds: 200),
         colorSelected: AppColors.white,

@@ -11,11 +11,12 @@ class CustomTabBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       height: 50,
       margin: const EdgeInsets.symmetric(horizontal: 16),
       decoration: BoxDecoration(
-        color: AppColors.gray100,
+        color: isDark ? Theme.of(context).colorScheme.surface : AppColors.gray100,
         borderRadius: BorderRadius.circular(10),
       ),
       child: TabBar(
@@ -24,7 +25,7 @@ class CustomTabBar extends StatelessWidget {
         indicatorSize: TabBarIndicatorSize.tab,
         indicatorPadding: const EdgeInsets.all(4),
         indicator: BoxDecoration(
-          color: AppColors.white,
+          color: isDark ? Theme.of(context).cardColor : AppColors.white,
           borderRadius: BorderRadius.circular(10),
           boxShadow: [
             BoxShadow(
@@ -34,8 +35,8 @@ class CustomTabBar extends StatelessWidget {
             ),
           ],
         ),
-        labelColor: AppColors.green200,
-        unselectedLabelColor: AppColors.gray500,
+        labelColor: isDark ? AppColors.green200 : AppColors.green200,
+        unselectedLabelColor: isDark ? AppColors.gray400 : AppColors.gray500,
         labelStyle: Theme.of(context).textTheme.titleMedium,
         unselectedLabelStyle: Theme.of(context).textTheme.titleMedium,
         tabs: tabs.map((tab) => Tab(text: tab)).toList(),

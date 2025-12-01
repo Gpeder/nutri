@@ -56,6 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
               subtitle: 'Costas/Peito',
               icon: FontAwesomeIcons.dumbbell,
             ),
+            const SizedBox(height: 10),
           ],
         ),
       ),

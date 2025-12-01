@@ -21,10 +21,11 @@ class CardHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: bgColor,
+        color: isDark ? Theme.of(context).cardColor : bgColor,
         borderRadius: BorderRadius.circular(12),
         border: Border.all(color: borderColor, width: 0.5),
         boxShadow: AppTheme.softShadow,

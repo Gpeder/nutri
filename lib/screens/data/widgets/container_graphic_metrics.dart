@@ -17,7 +17,7 @@ class ContainerGraphicMetrics extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(10),
         border: Border.all(color: AppColors.gray200),
         boxShadow: [
@@ -51,7 +51,7 @@ class ContainerGraphicMetrics extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
-                  color: AppColors.gray900,
+                  color: Theme.of(context).colorScheme.onSurface,
                 ),
               ),
             ],

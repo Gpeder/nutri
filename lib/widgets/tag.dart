@@ -7,16 +7,18 @@ class Tag extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
-        color: AppColors.gray100,
+        color: isDark ? Theme.of(context).scaffoldBackgroundColor : AppColors.gray100,
+        border: isDark ? Border.all(color: Theme.of(context).colorScheme.outline) : null,
       ),
       child: Text(
         metric,
         style: Theme.of(context).textTheme.bodySmall?.copyWith(
-          color: AppColors.gray500,
+          color: isDark ? Theme.of(context).colorScheme.onSurface : AppColors.gray500,
           fontWeight: FontWeight.bold,
         ),
       ),

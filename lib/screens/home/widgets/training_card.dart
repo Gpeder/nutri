@@ -28,13 +28,14 @@ class TrainingCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return GestureDetector(
       onTap: onTap,
       child: Container(
         width: double.infinity,
-        padding: .symmetric(vertical: 20, horizontal: 15),
+        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 15),
         decoration: BoxDecoration(
-          color: backgroundColor,
+          color: isDark ? Theme.of(context).cardColor : backgroundColor,
           borderRadius: BorderRadius.circular(12),
           border: Border.all(color: borderColor),
           boxShadow: AppTheme.softShadow,

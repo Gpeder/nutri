@@ -12,7 +12,8 @@ class AppTheme {
 
   static const Color _darkBg = Color(0xFF020617);
   static const Color _darkSurface = Color(0xFF0F172A);
-  static const Color _darkTextMain = Color(0xFFF9FAFB);
+  static const Color _darkContainer = Color(0xFF1E293A); 
+  static const Color _darkTextMain = Colors.white;
   static const Color _darkTextSec = Color(0xFF9CA3AF);
   static const Color _darkBorder = Color(0xFF1E293B);
   static const Color _darkPrimary = Color(0xFF34D399);
@@ -73,6 +74,10 @@ class AppTheme {
       brightness: Brightness.light,
       scaffoldBackgroundColor: _lightBg,
       primaryColor: _lightPrimary,
+      cardColor: Colors.white,
+      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+        backgroundColor: Colors.white,
+      ),
       colorScheme: const ColorScheme.light(
         primary: _lightPrimary,
         surface: _lightSurface,
@@ -104,6 +109,10 @@ class AppTheme {
       brightness: Brightness.dark,
       scaffoldBackgroundColor: _darkBg,
       primaryColor: _darkPrimary,
+      cardColor: _darkContainer,
+      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+        backgroundColor: _darkSurface,
+      ),
       colorScheme: const ColorScheme.dark(
         primary: _darkPrimary,
         surface: _darkSurface,
