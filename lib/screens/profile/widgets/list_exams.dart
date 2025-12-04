@@ -9,33 +9,38 @@ class ListExams extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       decoration: BoxDecoration(
-        color: Colors.grey.shade50,
+        color: isDark ? Theme.of(context).cardColor : AppColors.gray50,
         borderRadius: BorderRadius.circular(10),
+        border: isDark
+            ? Border.all(color: Colors.grey.shade800, width: 0.5)
+            : null,
       ),
       child: ListTile(
-        contentPadding: .zero,
-        visualDensity: .compact,
-        leading: const Icon(
+        contentPadding: EdgeInsets.zero,
+        visualDensity: VisualDensity.compact,
+        leading: Icon(
           FontAwesomeIcons.fileLines,
           size: 20,
-          color: AppColors.gray500,
+          color: isDark ? AppColors.gray400 : AppColors.gray500,
         ),
         title: Text(
           namePdf,
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
-          style: Theme.of(
-            context,
-          ).textTheme.bodyMedium?.copyWith(color: AppColors.gray500),
+          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+            color: isDark ? AppColors.gray200 : AppColors.gray500,
+          ),
         ),
         trailing: Text(
           statusPdf,
-          style: Theme.of(
-            context,
-          ).textTheme.bodyMedium?.copyWith(color: AppColors.gray500),
+          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+            color: isDark ? AppColors.gray400 : AppColors.gray500,
+          ),
         ),
       ),
     );

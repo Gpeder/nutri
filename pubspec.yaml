@@ -19,7 +19,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ^3.10.0
+  sdk: '>=3.0.0 <4.0.0'
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -40,7 +40,7 @@ dependencies:
   material_design_icons_flutter: ^7.0.7296
   awesome_bottom_bar: ^1.2.4
   syncfusion_flutter_charts: ^31.2.15
-
+  dotted_border: ^2.1.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

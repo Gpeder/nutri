@@ -42,7 +42,7 @@ class CardHelthRefrigerator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: .symmetric(vertical: 20, horizontal: 15),
+      padding: EdgeInsets.symmetric(vertical: 20, horizontal: 15),
       decoration: BoxDecoration(
         color: Theme.of(context).cardColor,
         boxShadow: AppTheme.softShadow,
@@ -60,19 +60,12 @@ class CardHelthRefrigerator extends StatelessWidget {
                 style: Theme.of(context).textTheme.titleLarge,
               ),
               Spacer(),
-              Container(
-                padding: .symmetric(horizontal: 10, vertical: 5),
-                decoration: BoxDecoration(
-                  color: _getSecondaryColor(),
-                  border: Border.all(color: _getPrimaryColor(), width: 0.5),
-                  borderRadius: .circular(20),
-                ),
-                child: CustomBadge(
+                CustomBadge(
                   title: 'Nivel: ${_getText()}',
                   color: _getPrimaryColor(),
-                  borderColor: _getSecondaryColor(),
+                  borderColor: _getPrimaryColor(),
+                  backgroundColor: _getSecondaryColor(),
                 ),
-              ),
             ],
           ),
           SizedBox(height: 20),

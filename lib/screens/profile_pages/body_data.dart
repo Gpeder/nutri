@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:nutri/core/theme/colors.dart';
-import 'package:nutri/core/theme/app_theme.dart';
 import 'package:nutri/screens/profile_pages/widgets/bioimpedance_table.dart';
 import 'package:nutri/screens/profile_pages/widgets/card_body_data.dart';
 import 'package:nutri/widgets/genericappbar.dart';

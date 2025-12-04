@@ -36,7 +36,7 @@ class DietScreen extends StatelessWidget {
                 children: [
                   _myPlan(),
                   ListView(
-                    padding: .symmetric(horizontal: 15),
+                    padding: EdgeInsets.symmetric(horizontal: 15),
                     children: [
                       HeaderRefrigerator(),
                       const SizedBox(height: 20),
@@ -82,7 +82,7 @@ class DietScreen extends StatelessWidget {
                           ],
                         ),
                         child: Column(
-                          crossAxisAlignment: .start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Row(
                               children: [
@@ -169,7 +169,7 @@ class RefrigeratorItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: .symmetric(horizontal: 16),
+      padding: EdgeInsets.symmetric(horizontal: 16),
       decoration: BoxDecoration(
         color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(8),
@@ -211,7 +211,7 @@ class HeaderRefrigerator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: .center,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Row(
           children: [

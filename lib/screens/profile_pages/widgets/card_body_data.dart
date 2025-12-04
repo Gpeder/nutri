@@ -30,12 +30,15 @@ class CardBodyData extends StatelessWidget {
       decoration: BoxDecoration(
         color: isDark ? Theme.of(context).cardColor : AppColors.white,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: AppColors.gray200, width: 0.5),
+        border: Border.all(
+          color: isDark ? Colors.grey.shade800 : AppColors.gray200,
+          width: 0.5,
+        ),
         boxShadow: AppTheme.softShadow,
       ),
       child: ListTile(
-        contentPadding: .zero,
-        visualDensity: .compact,
+        contentPadding: EdgeInsets.zero,
+        visualDensity: VisualDensity.compact,
         leading: ContainerIcon(
           icon: icon,
           iconColor: iconColor,
@@ -45,14 +48,14 @@ class CardBodyData extends StatelessWidget {
         title: Text(
           title,
           style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-            color: AppColors.gray500,
+            color: isDark ? AppColors.gray200 : AppColors.gray500,
             fontWeight: FontWeight.w800,
           ),
         ),
         subtitle: Text(
           subtitle,
           style: Theme.of(context).textTheme.titleLarge?.copyWith(
-            color: AppColors.gray900,
+            color: isDark ? AppColors.white : AppColors.gray900,
             fontWeight: FontWeight.w800,
           ),
         ),

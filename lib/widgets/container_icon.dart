@@ -16,7 +16,7 @@ class ContainerIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: .zero,
+      padding: EdgeInsets.zero,
       width: 40,
       height: 40,
       decoration: BoxDecoration(

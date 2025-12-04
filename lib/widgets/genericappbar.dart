@@ -29,7 +29,7 @@ class GenericAppBar extends StatelessWidget implements PreferredSizeWidget {
         child: SizedBox(),
       ),
       title: ListTile(
-        contentPadding: .zero,
+        contentPadding: EdgeInsets.zero,
         title: Text(
           title,
           style: Theme.of(

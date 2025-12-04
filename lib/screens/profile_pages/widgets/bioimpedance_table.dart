@@ -64,7 +64,9 @@ class BioimpedanceTable extends StatelessWidget {
                   'Atualizado em $datebioimpedance',
                   style: Theme.of(
                     context,
-                  ).textTheme.bodySmall?.copyWith(color: AppColors.gray500),
+                  ).textTheme.bodySmall?.copyWith(
+                        color: isDark ? AppColors.gray400 : AppColors.gray500,
+                      ),
                 ),
               ],
             ),
@@ -87,7 +89,7 @@ class BioimpedanceTable extends StatelessWidget {
                 ),
               ),
               children: [
-                _buildTableRow(context, 'Peso Atual', wheightNow),
+                _buildTableRow(context, 'Peso Atual', wheightNow, isDark),
 
                 TableRow(
                   children: [
@@ -96,7 +98,7 @@ class BioimpedanceTable extends StatelessWidget {
                       child: Text(
                         'Gordura Corporal (BF)',
                         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          color: AppColors.gray500,
+                          color: isDark ? AppColors.gray400 : AppColors.gray500,
                         ),
                       ),
                     ),
@@ -124,8 +126,13 @@ class BioimpedanceTable extends StatelessWidget {
                     ),
                   ],
                 ),
-                _buildTableRow(context, 'Massa Muscular', muscleMass),
-                _buildTableRow(context, 'Taxa Metabólica (TMB)', metabolicRate),
+                _buildTableRow(context, 'Massa Muscular', muscleMass, isDark),
+                _buildTableRow(
+                  context,
+                  'Taxa Metabólica (TMB)',
+                  metabolicRate,
+                  isDark,
+                ),
               ],
             ),
           ),
@@ -136,16 +143,21 @@ class BioimpedanceTable extends StatelessWidget {
   }
 }
 
-TableRow _buildTableRow(BuildContext context, String label, String value) {
+TableRow _buildTableRow(
+  BuildContext context,
+  String label,
+  String value,
+  bool isDark,
+) {
   return TableRow(
     children: [
       Padding(
         padding: const EdgeInsets.symmetric(vertical: 16),
         child: Text(
           label,
-          style: Theme.of(
-            context,
-          ).textTheme.bodyLarge?.copyWith(color: AppColors.gray500),
+          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+            color: isDark ? AppColors.gray400 : AppColors.gray500,
+          ),
         ),
       ),
       Padding(
@@ -153,9 +165,10 @@ TableRow _buildTableRow(BuildContext context, String label, String value) {
         child: Text(
           value,
           textAlign: TextAlign.right,
-          style: Theme.of(
-            context,
-          ).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w800),
+          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+            fontWeight: FontWeight.w800,
+            color: isDark ? AppColors.white : AppColors.gray900,
+          ),
         ),
       ),
     ],

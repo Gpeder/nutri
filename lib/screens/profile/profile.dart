@@ -6,6 +6,8 @@ import 'package:nutri/screens/profile/widgets/container_profile.dart';
 import 'package:nutri/screens/profile/widgets/list_exams.dart';
 import 'package:nutri/screens/profile/widgets/switch_theme.dart';
 import 'package:nutri/screens/profile_pages/body_data.dart';
+import 'package:nutri/screens/profile_pages/medical_exams.dart';
+import 'package:nutri/screens/profile_pages/my_team.dart';
 import 'package:nutri/widgets/genericappbar.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -21,7 +23,7 @@ class ProfileScreen extends StatelessWidget {
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 15),
         child: Column(
-          crossAxisAlignment: .start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _headerProfile(context, name: name, email: email),
             SizedBox(height: 20),
@@ -33,9 +35,7 @@ class ProfileScreen extends StatelessWidget {
               icon: FontAwesomeIcons.fileLines,
               onTap: () => Navigator.push(
                 context,
-                MaterialPageRoute(
-                  builder: (context) => const BodyData(),
-                ),
+                MaterialPageRoute(builder: (context) => const BodyData()),
               ),
             ),
             SizedBox(height: 10),
@@ -45,7 +45,10 @@ class ProfileScreen extends StatelessWidget {
               icon: FontAwesomeIcons.arrowUpFromBracket,
               iconColor: AppColors.red200,
               bgIconColor: AppColors.red100,
-              onTap: () {},
+              onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const MedicalExams()),
+              ),
             ),
             SizedBox(height: 10),
             ContainerProfile(
@@ -54,7 +57,10 @@ class ProfileScreen extends StatelessWidget {
               icon: FontAwesomeIcons.userDoctor,
               iconColor: AppColors.green200,
               bgIconColor: AppColors.green100,
-              onTap: () {},
+              onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const MyTeam()),
+              ),
             ),
             SizedBox(height: 10),
             Text(
@@ -77,7 +83,7 @@ class ProfileScreen extends StatelessWidget {
       child: ListView.separated(
         shrinkWrap: true,
         physics: NeverScrollableScrollPhysics(),
-        padding: .only(bottom: 20, top: 10, left: 5, right: 5),
+        padding: EdgeInsets.only(bottom: 20, top: 10, left: 5, right: 5),
         separatorBuilder: (context, index) {
           return SizedBox(height: 10);
         },

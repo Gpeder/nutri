@@ -32,8 +32,8 @@ class ContainerProfile extends StatelessWidget {
       ),
       child: ListTile(
         onTap: onTap,
-        contentPadding: .zero,
-        visualDensity: .compact,
+        contentPadding: EdgeInsets.zero,
+        visualDensity: VisualDensity.compact,
         leading: Container(
           width: 40,
           height: 40,
