@@ -68,6 +68,32 @@ class AppTheme {
     );
   }
 
+  static InputDecorationTheme _buildInputDecorationTheme({
+    required Color baseColor,
+    required Color focusColor,
+    required Color errorColor,
+  }) {
+    return InputDecorationTheme(
+      contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10),
+        borderSide: BorderSide(color: baseColor),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10),
+        borderSide: BorderSide(color: focusColor, width: 2),
+      ),
+      errorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10),
+        borderSide: BorderSide(color: errorColor),
+      ),
+      focusedErrorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10),
+        borderSide: BorderSide(color: errorColor, width: 2),
+      ),
+    );
+  }
+
   static ThemeData get lightTheme {
     return ThemeData(
       useMaterial3: true,
@@ -83,8 +109,14 @@ class AppTheme {
         surface: _lightSurface,
         onSurface: _lightTextMain,
         outline: _lightBorder,
+        error: AppColors.red200,
       ),
       textTheme: _buildTextTheme(_lightTextMain),
+      inputDecorationTheme: _buildInputDecorationTheme(
+        baseColor: AppColors.gray200,
+        focusColor: AppColors.green200,
+        errorColor: AppColors.red200,
+      ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.white,
@@ -99,7 +131,6 @@ class AppTheme {
           ),
         ),
       ),
-
     );
   }
 
@@ -118,8 +149,14 @@ class AppTheme {
         surface: _darkSurface,
         onSurface: _darkTextMain,
         outline: _darkBorder,
+        error: AppColors.red200,
       ),
       textTheme: _buildTextTheme(_darkTextMain),
+      inputDecorationTheme: _buildInputDecorationTheme(
+        baseColor: _darkBorder,
+        focusColor: AppColors.emerald400,
+        errorColor: AppColors.red200,
+      ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.slate800,

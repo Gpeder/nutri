@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:nutri/core/theme/app_theme.dart';
 import 'package:nutri/core/theme/colors.dart';
+import 'package:nutri/models/meetings.dart';
 import 'package:nutri/models/team.dart';
 import 'package:nutri/screens/profile_pages/widgets/meeting_card.dart' show NextMeeting;
 import 'package:nutri/screens/profile_pages/widgets/team_card.dart';
@@ -56,13 +56,21 @@ class MyTeam extends StatelessWidget {
                 style: Theme.of(context).textTheme.titleMedium,
               ),
               const SizedBox(height: 15),
-              NextMeeting(
-                title: 'Retorno nutricional',
-                time: '12:00',
-                type: 'Online',
-                day: '25',
-                month: 'Dez',
-              )
+              ListView.separated(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                separatorBuilder: (context, index) => const SizedBox(height: 15),
+                itemBuilder: (context, index) {
+                  return NextMeeting(
+                    title: Meeting.mockMeetings[index].title,
+                    time: Meeting.mockMeetings[index].time,
+                    type: Meeting.mockMeetings[index].type,
+                    day: Meeting.mockMeetings[index].day,
+                    month: Meeting.mockMeetings[index].month,
+                  );
+                },
+                itemCount: Meeting.mockMeetings.length,
+              ),
             ],
           ),
         ),

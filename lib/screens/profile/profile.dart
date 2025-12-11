@@ -8,6 +8,7 @@ import 'package:nutri/screens/profile/widgets/switch_theme.dart';
 import 'package:nutri/screens/profile_pages/body_data.dart';
 import 'package:nutri/screens/profile_pages/medical_exams.dart';
 import 'package:nutri/screens/profile_pages/my_team.dart';
+import 'package:nutri/screens/profile_pages/user_data.dart';
 import 'package:nutri/widgets/genericappbar.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -29,6 +30,16 @@ class ProfileScreen extends StatelessWidget {
             SizedBox(height: 20),
             SwitchThemeApp(),
             SizedBox(height: 20),
+            ContainerProfile(
+              title: 'Dados do usuário',
+              subtitle: 'Informações pessoais',
+              icon: FontAwesomeIcons.user,
+              onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const UserData()),
+              ),
+            ),
+            SizedBox(height: 10),
             ContainerProfile(
               title: 'Dados Corporais',
               subtitle: 'Altura, peso e mais',

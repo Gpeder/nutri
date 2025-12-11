@@ -42,7 +42,10 @@ class NextMeeting extends StatelessWidget {
                   style: Theme.of(context).textTheme.titleLarge?.copyWith(
                         color: AppColors.blue200,
                       )),
-              Text(month, style: Theme.of(context).textTheme.bodyMedium),
+              Text(month,
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        color: AppColors.blue200,
+                      )),
             ],
           ),
         ),
