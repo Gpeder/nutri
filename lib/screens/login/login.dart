@@ -5,6 +5,7 @@ import 'package:nutri/core/theme/colors.dart';
 import 'package:nutri/screens/profile_pages/user_data.dart';
 import 'package:nutri/screens/login/widgets/social_login_button.dart';
 import 'package:nutri/screens/register/register.dart';
+import 'package:nutri/screens/root/root_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -85,7 +86,14 @@ class _LoginPageState extends State<LoginPage> {
         SizedBox(
           width: double.infinity,
           child: ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const RootPage(),
+                ),
+              );
+            },
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColors.green200,
               foregroundColor: AppColors.white,
