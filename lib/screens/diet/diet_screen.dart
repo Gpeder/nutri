@@ -28,9 +28,7 @@ class DietScreen extends StatelessWidget {
           children: [
             const SizedBox(height: 20),
             CustomTabBar(tabs: ['Meu Plano', 'Minha Geladeira']),
-
             const SizedBox(height: 20),
-
             Expanded(
               child: TabBarView(
                 children: [
@@ -54,8 +52,8 @@ class DietScreen extends StatelessWidget {
                             iconColor: item.healthFood == 'Alto'
                                 ? AppColors.green200
                                 : item.healthFood == 'Médio'
-                                ? AppColors.yellow200
-                                : AppColors.red200,
+                                    ? AppColors.yellow200
+                                    : AppColors.red200,
                           );
                         },
                       ),
@@ -90,7 +88,9 @@ class DietScreen extends StatelessWidget {
                                 SizedBox(width: 10),
                                 Text(
                                   'Sugestão do Chef IA',
-                                  style: Theme.of(context).textTheme.titleLarge
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .titleLarge
                                       ?.copyWith(color: AppColors.white),
                                 ),
                               ],
@@ -123,17 +123,30 @@ class DietScreen extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 20).copyWith(bottom: 20),
       itemBuilder: (context, index) {
         if (index == dailyDietMock.length) {
-          return Center(
-            child: Padding(
-              padding: const EdgeInsets.only(top: 12),
-              child: NoticeCard(
-                text: "Nota: Este plano é personalizado. Evite substituições sem consultar seu nutricionista.",
-                icon: FontAwesomeIcons.circleExclamation,
-                iconColor: AppColors.yellow200,
-                textColor: AppColors.yellow200,
-                backgroundColor: AppColors.yellow50,
-              ),
-            ),
+          return Column(
+            children: [
+              if (dailyDietMock.isEmpty)
+                Text(
+                  'Nenhuma refeição adicionada',
+                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                        color: AppColors.gray900,
+                      ),
+                )
+              else
+                Center(
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 12),
+                    child: NoticeCard(
+                      text:
+                          "Nota: Este plano é personalizado. Evite substituições sem consultar seu nutricionista.",
+                      icon: FontAwesomeIcons.circleExclamation,
+                      iconColor: AppColors.yellow200,
+                      textColor: AppColors.yellow200,
+                      backgroundColor: AppColors.yellow50,
+                    ),
+                  ),
+                ),
+            ],
           );
         }
         final snack = dailyDietMock[index];
@@ -153,7 +166,28 @@ class DietScreen extends StatelessWidget {
   }
 }
 
-
+void _showAddSnackDialog(BuildContext context) {
+  showDialog(
+    context: context,
+    builder: (context) {
+      return AlertDialog(
+        title: const Text('Adicionar PDF do plano',
+            style: TextStyle(color: AppColors.gray900)),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                 Navigator.pop(context);
+              },
+              child: const Text('Adicionar'),
+            ),
+          ],
+        ),
+      );
+    },
+  );
+}
 
 class RefrigeratorItem extends StatelessWidget {
   final String item;

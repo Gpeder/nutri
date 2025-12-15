@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:nutri/core/theme/app_theme.dart';
 import 'package:nutri/core/theme/colors.dart';
 import 'package:nutri/widgets/genericappbar.dart';
 
@@ -26,6 +25,7 @@ class UserData extends StatelessWidget {
               label: 'Nome completo',
               hint: 'Digite seu nome',
               keyboardType: TextInputType.name,
+              prefixIcon: FontAwesomeIcons.user,
               onChanged: (String p1) {},
             ),
             SizedBox(height: 20),
@@ -33,6 +33,7 @@ class UserData extends StatelessWidget {
               label: 'Email',
               hint: 'email@email.com',
               keyboardType: TextInputType.emailAddress,
+              prefixIcon: FontAwesomeIcons.envelope,
               onChanged: (String p1) {},
             ),
             SizedBox(height: 20),
@@ -40,6 +41,7 @@ class UserData extends StatelessWidget {
               label: 'Telefone',
               hint: 'Digite 00 0000-0000',
               keyboardType: TextInputType.phone,
+              prefixIcon: FontAwesomeIcons.phone,
               onChanged: (String p1) {},
             ),
             SizedBox(height: 20),
@@ -47,6 +49,7 @@ class UserData extends StatelessWidget {
               label: 'Data de nascimento',
               hint: '00/00/0000',
               keyboardType: TextInputType.datetime,
+              prefixIcon: FontAwesomeIcons.calendar,
               onChanged: (String p1) {},
             ),
             SizedBox(height: 20),
@@ -143,7 +146,11 @@ class TextForm extends StatelessWidget {
   final TextInputType keyboardType;
   final Function(String) onChanged;
   final Function()? onTap;
+  final IconData? suffixIcon;
+  final VoidCallback? suffixIconOnPressed;
+  final IconData? prefixIcon;
   final Function(String)? onFieldSubmitted;
+  final bool obscureText;
 
   const TextForm({
     super.key,
@@ -152,7 +159,11 @@ class TextForm extends StatelessWidget {
     required this.onChanged,
     this.onTap,
     this.onFieldSubmitted,
+    this.suffixIcon,
+    this.suffixIconOnPressed,
+    this.prefixIcon,
     required this.hint,
+    this.obscureText = false,
   });
 
   @override
@@ -161,7 +172,7 @@ class TextForm extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Nome completo',
+          label,
           style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                 color: AppColors.gray500,
                 fontWeight: FontWeight.bold,
@@ -169,11 +180,29 @@ class TextForm extends StatelessWidget {
         ),
         const SizedBox(height: 8),
         TextFormField(
+          obscureText: obscureText,
           keyboardType: keyboardType,
           onChanged: onChanged,
           onTap: onTap,
           onFieldSubmitted: onFieldSubmitted,
           decoration: InputDecoration(
+            fillColor: Color(0xffF9FAFB),
+            suffixIcon: suffixIcon != null
+                ? IconButton(
+                    highlightColor: Colors.transparent,
+                    splashColor: Colors.transparent,
+                    onPressed: suffixIconOnPressed,
+                    icon: Icon(suffixIcon),
+                    visualDensity: VisualDensity.compact,
+                    iconSize: 18,
+                  )
+                : null,
+            prefixIcon: prefixIcon != null
+                ? Icon(
+                    prefixIcon,
+                    size: 18,
+                  )
+                : null,
             hintText: hint,
           ),
         ),

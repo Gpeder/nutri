@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:nutri/core/theme/colors.dart';
+import 'package:nutri/models/snack_model.dart';
 
 class SnackCard extends StatelessWidget {
   final String title;
   final String time;
-  final List<Map<String, String>> items;
+  final List<NutritionItem> items;
   final double protein;
   final double carbs;
   final double fat;
@@ -87,14 +88,7 @@ class SnackCard extends StatelessWidget {
                           color: Theme.of(context).colorScheme.onSurface,
                         ),
                         children: [
-                          TextSpan(text: "${foodItem['name']} "),
-                          TextSpan(
-                            text: "(${foodItem['qtd'] ?? ''})",
-                            style: TextStyle(
-                              color: AppColors.gray500,
-                              fontWeight: FontWeight.normal,
-                            ),
-                          ),
+                          TextSpan(text: "${foodItem.name} "),
                         ],
                       ),
                     ),

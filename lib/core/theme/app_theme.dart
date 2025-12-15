@@ -74,6 +74,11 @@ class AppTheme {
     required Color errorColor,
   }) {
     return InputDecorationTheme(
+      visualDensity: VisualDensity.compact,
+      suffixIconColor: AppColors.gray400,
+      prefixIconColor: AppColors.gray400,
+      fillColor: Color(0xffF9FAFB),
+      hintStyle: const TextStyle(color: AppColors.gray400),
       contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10),
